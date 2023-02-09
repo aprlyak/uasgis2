@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <title>GoogleMaps</title>
+  <head>
+    <style>
+      #map {
+        height: 600px;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var RumahSaya = {
+          lat: -0.9097432682609001,
+          lng: 119.88846010076836,
+        };
+        var waypoint1 = { lat: -0.9096066840034878, lng: 119.88988392438475 };
+        var waypoint2 = { lat: -0.897797605039158, lng: 119.88728846505683 };
+        var waypoint3 = { lat: -0.893875325136331, lng: 119.8865613997811 };
+        var waypoint4 = { lat: -0.8931737105418032, lng: 119.8852509961377 };
+        var waypoint5 = { lat: -0.8913478203718217, lng: 119.88327270799745 };
+        var waypoint6 = { lat: -0.8893359586414857, lng: 119.88156495574488 };
+        var waypoint7 = { lat: -0.887797475469747, lng: 119.87524119834058 };
+        var waypoint8 = { lat: -0.88722265739973, lng: 119.87532574053525};
+        var STMIK = { lat: -0.8866506, lng: 119.8752671 };
+
+        var map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 15,
+          center: RumahSaya,
+        });
+        var marker1 = new google.maps.Marker({
+          position: RumahSaya,
+          map: map
+        });
+        var marker2 = new google.maps.Marker({ position: STMIK, map: map });
+
+        var polyline = new google.maps.Polyline({
+          path: [
+            RumahSaya,
+            waypoint1,
+            waypoint2,
+            waypoint3,
+            waypoint4,
+            waypoint5,
+            waypoint6,
+            waypoint7,
+            waypoint8,
+            STMIK,
+
+          ],
+          strokeColor: "Red",
+          strokeOpacity: 5,
+          strokeWeight: 3,
+        });
+
+        polyline.setMap(map);
+      }
+    </script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh8nyTRtu21vDzdR0tfkST6kfDdWApSkU&callback=initMap"
+    ></script>
+  </body>
+</html>
